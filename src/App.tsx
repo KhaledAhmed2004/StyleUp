@@ -4,6 +4,7 @@ import FeaturesCard from './components/FeaturesCard';
 import Hero from './components/Hero';
 import NewsLatter from './components/NewsLatter';
 import ProductList from './components/ProductList';
+import Footer from './components/shared/Footer';
 import Header from './components/shared/Header';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <CategoriesCTA />
       <ProductList />
       <NewsLatter />
+      <Footer />
     </>
   );
 }

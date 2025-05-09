@@ -1,3 +1,4 @@
+import FeaturesCard from './components/FeaturesCard';
 import Hero from './components/Hero';
 import Header from './components/shared/Header';
 
@@ -6,6 +7,7 @@ function App() {
     <>
       <Header />
       <Hero />
+      <FeaturesCard />
     </>
   );
 }

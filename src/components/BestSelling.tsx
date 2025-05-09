@@ -140,7 +140,7 @@
 // );
 
 // export default BestSelling;
-import React from 'react';
+
 import img1 from '../assets/blackTeshart.png';
 import img2 from '../assets/brownteshart.png';
 import img3 from '../assets/whiteteshart.png';

@@ -147,8 +147,20 @@ import img3 from '../assets/whiteteshart.png';
 import img4 from '../assets/blackwithtext.png';
 
 const products = [
-  { id: 1, image: img1, title: 'Classic Monochrome Tees', price: 35, inStock: true },
-  { id: 2, image: img2, title: 'Monochromatic Wardrobe', price: 27, inStock: true },
+  {
+    id: 1,
+    image: img1,
+    title: 'Classic Monochrome Tees',
+    price: 35,
+    inStock: true,
+  },
+  {
+    id: 2,
+    image: img2,
+    title: 'Monochromatic Wardrobe',
+    price: 27,
+    inStock: true,
+  },
   { id: 3, image: img3, title: 'Essential Neutrals', price: 22, inStock: true },
   { id: 4, image: img4, title: 'UTRAANET Black', price: 43, inStock: true },
 ];
@@ -156,7 +168,7 @@ const products = [
 const ProductCard = ({ imageSrc, title, price, inStock }) => (
   <div className="flex h-[434px] w-[264px] flex-col gap-4 px-2 py-6">
     {/* Image wrapper: fixed square area */}
-    <div className="flex h-[321px] w-full items-center justify-center rounded-sm bg-neutral-white-w100 overflow-hidden">
+    <div className="flex h-[321px] w-full items-center justify-center overflow-hidden rounded-sm bg-neutral-white-w100">
       {/* Force images to same max height and auto width */}
       <img
         src={imageSrc}
@@ -170,7 +182,9 @@ const ProductCard = ({ imageSrc, title, price, inStock }) => (
       <div className="flex items-center gap-4">
         <span
           className={`rounded-full border px-4 py-1 text-xs font-medium ${
-            inStock ? 'border-green-500 text-green-600' : 'border-red-500 text-red-600'
+            inStock
+              ? 'border-green-500 text-green-600'
+              : 'border-red-500 text-red-600'
           }`}
         >
           {inStock ? 'IN STOCK' : 'OUT OF STOCK'}
@@ -185,7 +199,7 @@ const BestSelling = () => (
   <section className="mx-auto mt-[72px] max-w-7xl">
     <div className="mb-[80px] flex justify-center">
       <div className="text-center">
-        <p className="uppercase text-sm tracking-widest">Shop Now</p>
+        <p className="text-sm tracking-widest uppercase">Shop Now</p>
         <h3 className="mt-2 text-2xl font-bold">Best Selling</h3>
       </div>
     </div>

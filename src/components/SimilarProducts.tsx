@@ -54,7 +54,7 @@ const ProductCard = ({ imageSrc, title, price, inStock }) => (
 
 const SimilarProducts = () => {
   return (
-    <section className="max-w-7xl mx-auto">
+    <section className="mx-auto max-w-7xl">
       <div className="mb-[56px]">
         <h2 className="text-2xl font-bold">You might also like</h2>
         <p>SIMILAR PRODUCTS</p>

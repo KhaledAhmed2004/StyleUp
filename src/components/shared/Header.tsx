@@ -25,7 +25,7 @@ const Header = () => {
       </section>
 
       {/* Main Header */}
-      <nav className="border-b mx-auto flex h-[84px] max-w-7xl items-center justify-between pt-[20px] pb-[19px]">
+      <nav className="mx-auto flex h-[84px] max-w-7xl items-center justify-between border-b pt-[20px] pb-[19px]">
         {/* left */}
         <div className="flex items-center gap-[103px]">
           {/* Logo */}

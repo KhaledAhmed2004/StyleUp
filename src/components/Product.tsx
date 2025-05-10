@@ -9,7 +9,7 @@ import {
 import { Badge } from './ui/badge';
 import { Star } from 'lucide-react';
 import { Button } from './ui/button';
-
+import img from '../assets/Product image.svg';
 const Product = () => {
   return (
     <section className="mx-auto max-w-7xl">
@@ -27,7 +27,9 @@ const Product = () => {
         </BreadcrumbList>
       </Breadcrumb>
       <div className="mt-[16px] flex gap-[120px]">
-        <div className="h-[574px] w-[534px] rounded-[5px] bg-neutral-white-w100"></div>
+        <div className="h-[574px] w-[534px] rounded-[5px] bg-neutral-white-w100">
+          <img src={img} alt="" />
+        </div>
         <div>
           <h2 className="text-2xl font-bold">Raw Black T-Shirt Lineup</h2>
           <div className="mt-3.5 flex gap-2">

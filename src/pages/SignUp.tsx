@@ -147,15 +147,21 @@ const SignUp = () => {
               id="name"
               type="text"
               placeholder="Enter your Name"
-              className="!bg-white !py-[10px] !pl-10 !pr-4"
+              className="!bg-white !py-[10px] !pr-4 !pl-10"
             />
-            <User className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+            <User
+              className="absolute top-1/2 left-3 -translate-y-1/2 text-gray-400"
+              size={20}
+            />
           </div>
         </div>
 
         {/* Email Field */}
         <div className="mb-4 w-full space-y-2">
-          <Label className="body-medium text-neutral-black-b600" htmlFor="email">
+          <Label
+            className="body-medium text-neutral-black-b600"
+            htmlFor="email"
+          >
             Email
           </Label>
           <div className="relative">
@@ -163,15 +169,21 @@ const SignUp = () => {
               id="email"
               type="email"
               placeholder="Enter your Email"
-              className="!bg-white !py-[10px] !pl-10 !pr-4"
+              className="!bg-white !py-[10px] !pr-4 !pl-10"
             />
-            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+            <Mail
+              className="absolute top-1/2 left-3 -translate-y-1/2 text-gray-400"
+              size={20}
+            />
           </div>
         </div>
 
         {/* Password Field */}
         <div className="mb-4 w-full space-y-2">
-          <Label className="body-medium text-neutral-black-b600" htmlFor="password">
+          <Label
+            className="body-medium text-neutral-black-b600"
+            htmlFor="password"
+          >
             Password
           </Label>
           <div className="relative">
@@ -179,18 +191,21 @@ const SignUp = () => {
               id="password"
               type="password"
               placeholder="Enter your Password"
-              className="!bg-white !py-[10px] !pl-10 !pr-4"
+              className="!bg-white !py-[10px] !pr-4 !pl-10"
             />
-            <KeyRound className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+            <KeyRound
+              className="absolute top-1/2 left-3 -translate-y-1/2 text-gray-400"
+              size={20}
+            />
           </div>
         </div>
 
         {/* Terms and Conditions Checkbox */}
-        <div className="mb-6 mt-2 flex w-full items-start space-x-2">
+        <div className="mt-2 mb-6 flex w-full items-start space-x-2">
           <Checkbox id="terms" />
           <label
             htmlFor="terms"
-            className="text-sm font-medium leading-none text-gray-500 peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            className="text-sm leading-none font-medium text-gray-500 peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
           >
             By creating an account, you agree to our{' '}
             <Link to="/terms" className="text-primary hover:underline">
@@ -199,7 +214,8 @@ const SignUp = () => {
             and{' '}
             <Link to="/privacy" className="text-primary hover:underline">
               Privacy Policy
-            </Link>.
+            </Link>
+            .
           </label>
         </div>
 

@@ -10,6 +10,12 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import ForgotPassowrd from './pages/ForgotPassowrd';
 import ResetPassword from './pages/ResetPassword';
+import Orer from './pages/Orer';
+import ProfileLayout from './layouts/ProfileLayout';
+import AccoutDetaijls from './pages/AccoutDetaijls';
+import Password from './pages/Password';
+import Address from './pages/Address';
+import Wishlist from './pages/Wishlist';
 
 function App() {
   return (
@@ -26,6 +32,13 @@ function App() {
           <Route path="sign-up" element={<SignUp />} />
           <Route path="forgot-password" element={<ForgotPassowrd />} />
           <Route path="reset-password" element={<ResetPassword />} />
+        </Route>
+        <Route path="/profile" element={<ProfileLayout />}>
+          <Route path="orders" element={<Orer />} />
+          <Route path="wishlist" element={<Wishlist />} />
+          <Route path="address" element={<Address />} />
+          <Route path="password" element={<Password />} />
+          <Route path="details" element={<AccoutDetaijls />} />
         </Route>
       </Routes>
     </>

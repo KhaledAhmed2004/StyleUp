@@ -2,7 +2,7 @@ import BestSelling from '@/components/BestSelling';
 import CategoriesCTA from '@/components/CategoriesCTA';
 import FeaturesCard from '@/components/FeaturesCard';
 import Hero from '@/components/Hero';
-import NewsLatter from '@/components/NewsLatter';
+import NewsLatter from '@/components/Newsletter';
 import ProductList from '@/components/ProductList';
 import Footer from '@/components/shared/Footer';
 import Header from '@/components/shared/Header';

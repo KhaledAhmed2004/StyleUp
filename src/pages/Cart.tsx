@@ -1,4 +1,4 @@
-import OrderSummarny from '@/components/OrderSummarny';
+import OrderSummarny from '@/components/OrderSummary';
 import Footer from '@/components/shared/Footer';
 import Header from '@/components/shared/Header';
 import {

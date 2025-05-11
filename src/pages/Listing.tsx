@@ -1,5 +1,5 @@
-import FiterSidbar from '@/components/FiterSidbar';
-import NewsLatter from '@/components/NewsLatter';
+import FiterSidbar from '@/components/FilterSidebar';
+import NewsLatter from '@/components/Newsletter';
 import Footer from '@/components/shared/Footer';
 import Header from '@/components/shared/Header';
 

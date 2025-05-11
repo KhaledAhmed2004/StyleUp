@@ -1,4 +1,4 @@
-import NewsLatter from '@/components/NewsLatter';
+import NewsLatter from '@/components/Newsletter';
 import Product from '@/components/Product';
 import ProductDitels from '@/components/ProductDitels';
 import Footer from '@/components/shared/Footer';

@@ -1,8 +1,8 @@
 import OrderDetails from '@/components/OrderDetails';
-import OrderSummarny from '@/components/OrderSummarny';
+import OrderSummarny from '@/components/OrderSummary';
 import Footer from '@/components/shared/Footer';
 import Header from '@/components/shared/Header';
-import ShipingAddress from '@/components/ShipingAddress';
+import ShipingAddress from '@/components/ShippingAddress';
 import {
   Breadcrumb,
   BreadcrumbItem,

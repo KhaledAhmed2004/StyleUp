@@ -1,5 +1,5 @@
 import BreadcurmbContiner from '@/components/BreadcrumbContainer';
-import Footer from '@/components/shared/Footer';
+import Footer from '@/components/shared/FooterWithNewsletter';
 import Header from '@/components/shared/Header';
 import { Outlet } from 'react-router';
 

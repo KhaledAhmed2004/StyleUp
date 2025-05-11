@@ -10,7 +10,7 @@ import Login from './pages/auth/Login';
 import SignUp from './pages/auth/SignUp';
 import ForgotPassowrd from './pages/auth/ForgotPassword';
 import ResetPassword from './pages/auth/ResetPassword';
-import Orer from './pages/profile/Order';
+import Orer from './pages/profile/Orders';
 import ProfileLayout from './layouts/ProfileLayout';
 import AccoutDetaijls from './pages/profile/AccountDetails';
 import Password from './pages/profile/Password';

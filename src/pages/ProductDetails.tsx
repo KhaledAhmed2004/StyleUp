@@ -1,7 +1,7 @@
-import NewsLatter from '@/components/Newsletter';
+
 import Product from '@/components/Product';
-import ProductDitels from '@/components/ProductDitels';
-import Footer from '@/components/shared/Footer';
+import ProductDitels from '@/components/ProductDetails';
+import Footer from '@/components/shared/FooterWithNewsletter';
 import Header from '@/components/shared/Header';
 import SimilarProducts from '@/components/SimilarProducts';
 
@@ -12,7 +12,6 @@ const ProductDetails = () => {
       <Product />
       <ProductDitels />
       <SimilarProducts />
-      <NewsLatter />
       <Footer />
     </div>
   );

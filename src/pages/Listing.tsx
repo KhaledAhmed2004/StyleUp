@@ -1,6 +1,5 @@
 import FiterSidbar from '@/components/FilterSidebar';
-import NewsLatter from '@/components/Newsletter';
-import Footer from '@/components/shared/Footer';
+import Footer from '@/components/shared/FooterWithNewsletter';
 import Header from '@/components/shared/Header';
 
 const Listing = () => {
@@ -10,7 +9,7 @@ const Listing = () => {
       <div>
         <FiterSidbar />
       </div>
-      <NewsLatter />
+      
       <Footer />
     </div>
   );

@@ -58,4 +58,3 @@ const SuccesfulORder = () => {
 };
 
 export default SuccesfulORder;
- 

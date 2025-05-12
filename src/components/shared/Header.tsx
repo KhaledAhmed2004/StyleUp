@@ -5,13 +5,12 @@ import { CircleUserRound, Search, ShoppingCart } from 'lucide-react';
 import {
   NavigationMenu,
   NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  NavigationMenuViewport,
 } from '@/components/ui/navigation-menu';
+import { Link } from 'react-router';
 
 const Header = () => {
   return (
@@ -81,9 +80,11 @@ const Header = () => {
             </Button>
           </div>
           <div>
-            <Button className="!p-1" variant={'ghost'} size={'icon'}>
-              <CircleUserRound />
-            </Button>
+            <Link to={'/profile/orders'}>
+              <Button className="!p-1" variant={'ghost'} size={'icon'}>
+                <CircleUserRound />
+              </Button>
+            </Link>
           </div>
         </div>
       </nav>

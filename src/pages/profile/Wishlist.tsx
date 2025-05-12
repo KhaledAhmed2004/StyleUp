@@ -1,47 +1,110 @@
-import React from 'react';
+// import ProductItem from '@/components/ProductItem';
+// import img from '../../assets/brownteshart.png';
+
+// const wishlistItems = [
+//   {
+//     id: '1',
+//     title: 'Cool Sneakers',
+//     date: '2025-04-10',
+//     price: 79.99,
+//     status: 'In Stock',
+//     image: img,
+//   },
+//   {
+//     id: '2',
+//     title: 'Leather Jacket',
+//     date: '2025-03-22',
+//     price: 149.5,
+//     status: 'Out of Stock',
+//     image: img,
+//   },
+// ];
+
+// const Wishlist = () => {
+//   // If no items, show empty state
+//   if (wishlistItems.length === 0) {
+//     return (
+//       <div className="p-6">
+//         <h3 className="mb-4 text-xl font-semibold">Wishlist</h3>
+//         <p className="text-gray-500">Your wishlist is empty.</p>
+//       </div>
+//     );
+//   }
+
+//   return (
+//     <div className="p-6">
+//       <h3 className="mb-4 text-xl font-semibold">Wishlist</h3>
+//       <div className="flex flex-col gap-4">
+//         {wishlistItems.map((item) => (
+//           <ProductItem
+//             key={item.id}
+//             title={item.title}
+//             date={item.date}
+//             price={item.price}
+//             status={item.status}
+//             image={item.image}
+//           />
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Wishlist;
+
+import ProductItem from '@/components/ProductItem';
+import img from '../../assets/brownteshart.png';
+
+const wishlistItems = [
+  {
+    id: '1',
+    title: 'Cool Sneakers',
+    date: '2025-04-10',
+    price: 79.99,
+    status: 'In Stock',
+    image: img,
+  },
+  {
+    id: '2',
+    title: 'Leather Jacket',
+    date: '2025-03-22',
+    price: 149.5,
+    status: 'Out of Stock',
+    image: img,
+  },
+];
 
 const Wishlist = () => {
+  const handleRemove = async (id: string) => {
+    console.log(`Removing item with id: ${id}`);
+    // TODO: Add actual remove logic here, like API call or update state
+  };
+
+  if (wishlistItems.length === 0) {
+    return (
+      <div className="p-6">
+        <h3 className="mb-4 text-xl font-semibold">Wishlist</h3>
+        <p className="text-gray-500">Your wishlist is empty.</p>
+      </div>
+    );
+  }
+
   return (
-    <div>
-      <h3>Wishlist</h3>
-      <div>
-        <div
-          data-status="Default"
-          data-type="Whishlist"
-          className="inline-flex w-[617px] items-center justify-between"
-        >
-          <div className="relative h-20 w-64">
-            <div className="absolute top-[3.50px] left-[112px] inline-flex flex-col items-start justify-center">
-              <div className="justify-start text-center font-['Inter'] text-sm leading-normal font-medium text-gray-900">
-                Raw Black T-Shirt Lineup
-              </div>
-              <div className="justify-start text-center font-['Inter'] text-xs leading-normal font-medium text-gray-600 capitalize">
-                Added on: 27 July 2023
-              </div>
-              <div className="justify-start font-['Inter'] text-xs leading-normal font-medium text-gray-900 capitalize">
-                Remove item
-              </div>
-            </div>
-            <div className="absolute top-0 left-0 inline-flex h-20 w-20 items-center justify-center gap-2.5 overflow-hidden rounded bg-neutral-100 px-2.5">
-              <img className="h-16 w-11" src="https://placehold.co/44x62" />
-            </div>
-          </div>
-          <div className="flex items-center justify-end gap-8">
-            <div className="justify-start text-center font-['Inter'] text-sm leading-normal font-medium text-gray-900">
-              $75.00
-            </div>
-            <div
-              data-right-icon="false"
-              data-size="Default"
-              data-type="Outline Black"
-              className="flex h-11 items-center justify-start gap-1.5 overflow-hidden rounded bg-white px-6 py-3 outline outline-1 outline-offset-[-1px] outline-gray-900"
-            >
-              <div className="justify-start font-['Inter'] text-sm leading-normal font-medium text-gray-900">
-                Add to cart
-              </div>
-            </div>
-          </div>
-        </div>
+    <div className="p-6">
+      <h3 className="mb-4 text-xl font-semibold">Wishlist</h3>
+      <div className="flex flex-col gap-4">
+        {wishlistItems.map((item) => (
+          <ProductItem
+            key={item.id}
+            title={item.title}
+            date={item.date}
+            price={item.price}
+            status={item.status}
+            image={item.image}
+            mode="wishlist"
+            onRemove={() => handleRemove(item.id)}
+          />
+        ))}
       </div>
     </div>
   );

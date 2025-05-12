@@ -9,7 +9,7 @@ const Listing = () => {
       <div>
         <FiterSidbar />
       </div>
-      
+
       <Footer />
     </div>
   );

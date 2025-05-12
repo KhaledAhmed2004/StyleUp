@@ -1,50 +1,50 @@
-const Orer = () => {
+import ProductItem from '@/components/ProductItem';
+import img from '../../assets/brownteshart.png';
+
+const orders = [
+  {
+    title: 'Raw Black T-Shirt Lineup',
+    date: '27 July 2023',
+    price: 70.0,
+    status: 'Processing',
+    image: img,
+  },
+  {
+    title: 'Premium White Hoodie',
+    date: '01 August 2023',
+    price: 120.5,
+    status: 'Delivered',
+    image: img,
+  },
+  {
+    title: 'Casual Blue Jeans',
+    date: '15 August 2023',
+    price: 85.99,
+    status: 'Shipped',
+    image: img,
+  },
+];
+
+const Order = () => {
   return (
-    <div>
-      <h3>Orders</h3>
-      <div>
-        <div
-          data-status="Default"
-          data-type="Order"
-          className="inline-flex w-[617px] items-center justify-between"
-        >
-          <div className="relative h-20 w-64">
-            <div className="absolute top-[3.50px] left-[112px] inline-flex flex-col items-start justify-center">
-              <div className="justify-start text-center font-['Inter'] text-sm leading-normal font-medium text-gray-900">
-                Raw Black T-Shirt Lineup
-              </div>
-              <div className="justify-start text-center font-['Inter'] text-xs leading-normal font-medium text-gray-600 capitalize">
-                Ordered on: 27 July 2023
-              </div>
-              <div className="justify-start font-['Inter'] text-xs leading-normal font-medium text-gray-900 capitalize">
-                $70.00
-              </div>
-            </div>
-            <div className="absolute top-0 left-0 inline-flex h-20 w-20 items-center justify-center gap-2.5 overflow-hidden rounded bg-neutral-100 px-2.5">
-              <img className="h-16 w-11" src="https://placehold.co/44x62" />
-            </div>
-          </div>
-          <div className="flex items-center justify-end gap-8">
-            <div className="flex items-center justify-end gap-2.5 border-b border-gray-900">
-              <div className="justify-start text-center font-['Inter'] text-sm leading-normal font-medium text-gray-900">
-                Processing
-              </div>
-            </div>
-            <div
-              data-right-icon="false"
-              data-size="Default"
-              data-type="Outline Black"
-              className="flex h-11 items-center justify-start gap-1.5 overflow-hidden rounded bg-white px-6 py-3 outline outline-1 outline-offset-[-1px] outline-gray-900"
-            >
-              <div className="justify-start font-['Inter'] text-sm leading-normal font-medium text-gray-900">
-                View item
-              </div>
-            </div>
-          </div>
-        </div>
+    <div className="p-6">
+      <h3 className="mb-6 text-2xl font-semibold">Orders</h3>
+
+      <div className="flex flex-col gap-6">
+        {/* Map through orders array */}
+        {orders.map((order, index) => (
+          <ProductItem
+            key={index}
+            title={order.title}
+            date={order.date}
+            price={order.price}
+            status={order.status}
+            image={order.image}
+          />
+        ))}
       </div>
     </div>
   );
 };
 
-export default Orer;
+export default Order;

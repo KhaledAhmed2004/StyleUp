@@ -1,4 +1,3 @@
-
 import Product from '@/components/Product';
 import ProductDitels from '@/components/ProductDetails';
 import Footer from '@/components/shared/FooterWithNewsletter';

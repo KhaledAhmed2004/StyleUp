@@ -27,7 +27,9 @@ const BestSelling = () => (
   <section className="mx-auto mt-[72px] max-w-7xl">
     <div className="mb-[80px] flex justify-center">
       <div className="text-start">
-        <p className="label-loose-medium-uppercase text-neutral-black-b300">Shop Now</p>
+        <p className="label-loose-medium-uppercase text-neutral-black-b300">
+          Shop Now
+        </p>
         <h3 className="mt-2 heading-h3-normal-bold">Best Selling</h3>
       </div>
     </div>

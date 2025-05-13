@@ -420,10 +420,10 @@
 //     '/': HomeIcon,
 //     '/profile': UserIcon,
 //     '/profile/orders': BoxIcon,
-//     '/profile/wishlist': HeartIcon, 
-//     '/profile/address': MapPinIcon, 
-//     '/profile/password': LockIcon, 
-//     '/profile/details': FileTextIcon, 
+//     '/profile/wishlist': HeartIcon,
+//     '/profile/address': MapPinIcon,
+//     '/profile/password': LockIcon,
+//     '/profile/details': FileTextIcon,
 //     // add more mappings if needed…
 //   };
 
@@ -521,7 +521,9 @@ interface BreadcrumbContainerProps {
   showIcons?: boolean; // if true, render icons before each segment
 }
 
-const BreadcrumbContainer: React.FC<BreadcrumbContainerProps> = ({ showIcons = true }) => {
+const BreadcrumbContainer: React.FC<BreadcrumbContainerProps> = ({
+  showIcons = true,
+}) => {
   const location = useLocation();
   // Split path into segments, filter out empty
   const pathnames = location.pathname.split('/').filter((x) => x);
@@ -554,7 +556,7 @@ const BreadcrumbContainer: React.FC<BreadcrumbContainerProps> = ({ showIcons = t
 
   return (
     <section className="h-[160px] bg-neutral-white-w100 py-[40px]">
-      <div className="mx-auto max-w-7xl px-[12px] flex flex-col gap-2">
+      <div className="mx-auto flex max-w-7xl flex-col gap-2 px-[12px]">
         {/* Page heading: last segment or Home */}
         <h3 className="heading-h3-normal-bold">
           {pathnames.length

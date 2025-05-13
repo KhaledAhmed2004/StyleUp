@@ -13,7 +13,7 @@ const ProfileLayout = () => {
       <Header />
       <BreadcrumbContainer />
 
-      <div className="mx-auto flex max-w-7xl">
+      <div className="mx-auto flex max-w-7xl py-[100px]">
         {/* Sidebar Navigation */}
         <ProfileSidebar />
 
@@ -24,7 +24,7 @@ const ProfileLayout = () => {
         />
 
         {/* Main Content */}
-        <section className="flex-1 p-4">
+        <section className="flex-1 pl-[48px]">
           <Outlet />
         </section>
       </div>

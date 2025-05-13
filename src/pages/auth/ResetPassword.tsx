@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Mail, KeyRound, User } from 'lucide-react';
+import { Mail, User } from 'lucide-react';
 
 const ResetPassword = () => {
   return (
@@ -49,7 +49,7 @@ const ResetPassword = () => {
         </div>
 
         {/* Create Account Button */}
-        <Button className="body-medium mb-4 w-full">Reset password</Button>
+        <Button className="mb-4 w-full body-medium">Reset password</Button>
       </div>
     </section>
   );

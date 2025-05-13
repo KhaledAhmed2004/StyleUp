@@ -7,7 +7,7 @@ const ForgotPassowrd = () => {
   return (
     <section className="flex min-h-screen items-center justify-center">
       <div className="flex w-[318px] flex-col items-center">
-        <p className="body-regular mb-[24px]">
+        <p className="mb-[24px] body-regular">
           Please enter the email address associated with your account. We'll
           promptly send you a link to reset your password.
         </p>
@@ -34,7 +34,7 @@ const ForgotPassowrd = () => {
         </div>
 
         {/* Create Account Button */}
-        <Button className="body-medium mb-4 w-full">Send reset link</Button>
+        <Button className="mb-4 w-full body-medium">Send reset link</Button>
       </div>
     </section>
   );

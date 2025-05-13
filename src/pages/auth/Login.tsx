@@ -140,10 +140,10 @@ const Login = () => {
         </div>
 
         {/* Login Button */}
-        <Button className="body-medium mb-4 w-full">Login</Button>
+        <Button className="mb-4 w-full body-medium">Login</Button>
 
         {/* Sign up link */}
-        <p className="body-regular text-center text-neutral-black-b500">
+        <p className="text-center body-regular text-neutral-black-b500">
           Don't have an account?{' '}
           <Link to="/auth/sign-up" className="text-primary hover:underline">
             Sign up

@@ -220,10 +220,10 @@ const SignUp = () => {
         </div>
 
         {/* Create Account Button */}
-        <Button className="body-medium mb-4 w-full">Create Account</Button>
+        <Button className="mb-4 w-full body-medium">Create Account</Button>
 
         {/* Login Link */}
-        <p className="body-regular text-center text-neutral-black-b500">
+        <p className="text-center body-regular text-neutral-black-b500">
           Already have an account?{' '}
           <Link to="/auth/login" className="text-primary hover:underline">
             Log in

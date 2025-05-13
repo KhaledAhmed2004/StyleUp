@@ -1,4 +1,5 @@
 import { Badge } from '@/components/ui/badge';
+import { Link } from 'react-router';
 
 interface ProductCardProps {
   imageSrc: string;
@@ -9,7 +10,10 @@ interface ProductCardProps {
 
 const ProductCard = ({ imageSrc, title, price, inStock }: ProductCardProps) => {
   return (
-    <div className="flex h-[434px] w-[264px] flex-col gap-4 px-2 py-6">
+    <Link
+      to={'/product-details'}
+      className="flex h-[434px] w-[264px] flex-col gap-4 px-2 py-6"
+    >
       {/* Image wrapper */}
       <div className="flex h-[321px] w-full items-center justify-center overflow-hidden rounded-sm bg-neutral-white-w100">
         <img
@@ -37,7 +41,7 @@ const ProductCard = ({ imageSrc, title, price, inStock }: ProductCardProps) => {
           </p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

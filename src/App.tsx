@@ -16,6 +16,14 @@ import AccoutDetaijls from './pages/profile/AccountDetails';
 import Password from './pages/profile/Password';
 import Address from './pages/profile/Address';
 import Wishlist from './pages/profile/Wishlist';
+import Dashboard from './pages/dashboard/Dashboard';
+import Product from './pages/dashboard/Product';
+import AddProduct from './pages/dashboard/AddProduct';
+import Order from './pages/dashboard/Order';
+import Settings from './pages/dashboard/Settings';
+import Reviews from './pages/dashboard/Reviews';
+import Customer from './pages/dashboard/Customer';
+import DashboardLayout from './layouts/DashboardLayout';
 
 function App() {
   return (
@@ -44,6 +52,17 @@ function App() {
           <Route path="address" element={<Address />} />
           <Route path="password" element={<Password />} />
           <Route path="details" element={<AccoutDetaijls />} />
+        </Route>
+
+        {/* Dashboard routes */}
+        <Route path="/dashboard" element={<DashboardLayout />}>
+          <Route index element={<Dashboard />} />
+          <Route path="product" element={<Product />} />
+          <Route path="add-product" element={<AddProduct />} />
+          <Route path="orders" element={<Order />} />
+          <Route path="customer" element={<Customer />} />
+          <Route path="reviews" element={<Reviews />} />
+          <Route path="settings" element={<Settings />} />
         </Route>
       </Routes>
     </>

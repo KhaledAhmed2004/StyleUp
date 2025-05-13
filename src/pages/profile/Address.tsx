@@ -3,7 +3,7 @@ import { Label } from '@radix-ui/react-label';
 
 const Address = () => {
   return (
-    <div>
+    <div className="">
       <h3 className="mb-4 text-lg font-semibold">Shipping Address</h3>
       <div>
         {/* Street Address Field */}

@@ -1,4 +1,3 @@
-
 const OrderDetails = () => {
   return (
     <div className="relative h-[504px] w-96 overflow-hidden">

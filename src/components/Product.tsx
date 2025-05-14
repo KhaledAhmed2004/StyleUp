@@ -1,137 +1,185 @@
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb';
+import { useState } from 'react';
 import { Badge } from './ui/badge';
 import { Star } from 'lucide-react';
 import { Button } from './ui/button';
-import img from '../assets/Product image.svg';
-const Product = () => {
+
+// Define type for a color option
+interface ColorOption {
+  name: string;
+  value: string; // Tailwind-compatible inline style
+}
+
+// Updated product shape based on new data
+type ProductType = {
+  _id: string;
+  title: string;
+  price: number;
+  image: string;
+  rating: number;
+  review: number;
+  inStock: boolean;
+  availableQuantity: number;
+  colors: string[]; // Original array from API
+  sizes: string[];
+};
+
+// Props
+interface ProductProps {
+  product: ProductType;
+  onAddToCart?: (args: {
+    productId: string;
+    color: ColorOption;
+    size: string;
+    quantity: number;
+  }) => void;
+}
+
+const Product = ({ product, onAddToCart }: ProductProps) => {
+  // Convert hex colors to ColorOption objects
+  const colorOptions: ColorOption[] = product.colors.map((hex) => ({
+    name: hex,
+    value: `bg-[${hex}]`, // Tailwind won't allow dynamic colors directly
+  }));
+
+  const [selectedColor, setSelectedColor] = useState<ColorOption>(
+    colorOptions[0],
+  );
+  const [selectedSize, setSelectedSize] = useState<string>(product.sizes[0]);
+  const [quantity, setQuantity] = useState<number>(1);
+
+  const handleColorSelect = (color: ColorOption) => setSelectedColor(color);
+  const handleSizeSelect = (size: string) => setSelectedSize(size);
+
+  const handleQuantityChange = (delta: number) => {
+    setQuantity((prev) => {
+      const next = prev + delta;
+      if (next < 1) return 1;
+      if (next > product.availableQuantity) return product.availableQuantity;
+      return next;
+    });
+  };
+
+  const handleAddToCart = () => {
+    if (onAddToCart) {
+      onAddToCart({
+        productId: product._id,
+        color: selectedColor,
+        size: selectedSize,
+        quantity,
+      });
+    }
+  };
+
   return (
     <section className="mx-auto max-w-7xl">
-      <Breadcrumb className="mt-[16px]">
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/">Ecommerce</BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink className="text-black" href="/components">
-              Black man t-shirt
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
-      <div className="mt-[16px] flex gap-[120px]">
-        <div className="h-[574px] w-[534px] rounded-[5px] bg-neutral-white-w100">
-          <img src={img} alt="" />
+      <div className="mt-4 flex flex-col lg:flex-row lg:gap-28">
+        <div className="flex h-[574px] w-full items-center justify-center rounded-[5px] bg-neutral-white-w100 lg:w-[534px]">
+          <img
+            src={product.image}
+            alt={product.title}
+            className="h-full object-contain"
+          />
         </div>
-        <div>
-          <h2 className="text-2xl font-bold">Raw Black T-Shirt Lineup</h2>
+        <div className="flex-1">
+          <h2 className="text-2xl font-bold">{product.title}</h2>
           <div className="mt-3.5 flex gap-2">
-            <Badge variant="secondary" className="flex gap-2 px-[16px]">
-              <Star /> 4.2 — 54 Reviews
+            <Badge variant="secondary" className="flex gap-2 px-4">
+              <Star /> {product.rating} — {product.review} Reviews
             </Badge>
-            <Badge variant="outline" className="px-[16px]">
-              IN STOCK
+            <Badge
+              variant={product.inStock ? 'outline' : 'destructive'}
+              className="px-4"
+            >
+              {product.inStock ? 'IN STOCK' : 'OUT OF STOCK'}
             </Badge>
           </div>
-          <h3 className="mt-[24px] text-[18px] font-semibold">$75.00</h3>
-          <div className="mt-[32px]">
-            <h2 className="text-[12px] font-medium">AVAILABLE COLORS</h2>
-            <div className="inline-flex items-center justify-center gap-2.5">
-              <div
-                data-state="Selected"
-                className="flex h-8 w-8 items-center justify-center gap-2 rounded-[100px] outline outline-1 outline-offset-[-1px] outline-gray-900"
-              >
-                <div className="h-6 w-6 rounded-[100px] bg-indigo-300" />
-              </div>
-              <div
-                data-state="Default"
-                className="flex h-8 w-8 items-center justify-center gap-2 rounded-[100px]"
-              >
-                <div className="h-6 w-6 rounded-[100px] bg-amber-200" />
-              </div>
-              <div
-                data-state="Default"
-                className="flex h-8 w-8 items-center justify-center gap-2 rounded-[100px]"
-              >
-                <div className="h-6 w-6 rounded-[100px] bg-neutral-400" />
-              </div>
+          <h3 className="mt-6 text-lg font-semibold">
+            ${product.price.toFixed(2)}
+          </h3>
+
+          {/* Colors */}
+          <div className="mt-8">
+            <h4 className="text-xs font-medium uppercase">Available Colors</h4>
+            <div className="mt-2 inline-flex items-center gap-2.5">
+              {colorOptions.map((color) => (
+                <button
+                  key={color.name}
+                  onClick={() => handleColorSelect(color)}
+                  className={`flex h-8 w-8 items-center justify-center rounded-full outline-1 outline-offset-[-1px] ${
+                    selectedColor.name === color.name
+                      ? 'outline-gray-900'
+                      : 'outline-transparent hover:outline-gray-400'
+                  }`}
+                >
+                  <div
+                    className="h-6 w-6 rounded-full"
+                    style={{ backgroundColor: color.name }}
+                  />
+                </button>
+              ))}
             </div>
           </div>
-          <div className="relative mt-[16px] h-20 w-60">
-            <div className="absolute top-[34px] left-0 inline-flex items-end justify-start gap-2">
-              <div
-                data-state="Selected"
-                className="inline-flex h-10 min-w-10 flex-col items-center justify-center overflow-hidden rounded outline outline-1 outline-offset-[-1px] outline-gray-900"
-              >
-                <div className="justify-start text-center font-['Inter'] text-xs leading-normal font-medium text-gray-900 capitalize">
-                  S
-                </div>
-              </div>
-              <div
-                data-state="Default"
-                className="inline-flex h-10 min-w-10 flex-col items-center justify-center overflow-hidden rounded outline outline-1 outline-offset-[-1px] outline-gray-200"
-              >
-                <div className="justify-start text-center font-['Inter'] text-xs leading-normal font-medium text-gray-600 capitalize">
-                  M
-                </div>
-              </div>
-              <div
-                data-state="Default"
-                className="inline-flex h-10 min-w-10 flex-col items-center justify-center overflow-hidden rounded outline outline-1 outline-offset-[-1px] outline-gray-200"
-              >
-                <div className="justify-start text-center font-['Inter'] text-xs leading-normal font-medium text-gray-600 capitalize">
-                  X
-                </div>
-              </div>
-              <div
-                data-state="Default"
-                className="inline-flex h-10 min-w-10 flex-col items-center justify-center overflow-hidden rounded outline outline-1 outline-offset-[-1px] outline-gray-200"
-              >
-                <div className="justify-start text-center font-['Inter'] text-xs leading-normal font-medium text-gray-600 capitalize">
-                  XL
-                </div>
-              </div>
-              <div
-                data-state="Default"
-                className="inline-flex h-10 min-w-10 flex-col items-center justify-center overflow-hidden rounded outline outline-1 outline-offset-[-1px] outline-gray-200"
-              >
-                <div className="justify-start text-center font-['Inter'] text-xs leading-normal font-medium text-gray-600 capitalize">
-                  XXL
-                </div>
-              </div>
-            </div>
-            <div className="absolute top-0 left-0 justify-start text-center font-['Inter'] text-xs leading-normal font-medium tracking-wide text-gray-600 uppercase">
+
+          {/* Sizes */}
+          <div className="relative mt-6 h-20 w-full max-w-xs">
+            <div className="absolute top-0 left-0 text-xs font-medium tracking-wide text-gray-600 uppercase">
               Select Size
             </div>
-          </div>
-          <div className="relative mt-[34px] h-20 w-40">
-            <div
-              data-size="Default"
-              className="absolute top-[34px] left-0 inline-flex h-11 w-40 min-w-10 items-center justify-between overflow-hidden rounded px-4 outline outline-1 outline-offset-[-1px] outline-gray-200"
-            >
-              <div className="relative h-5 w-5 overflow-hidden">
-                <div className="absolute top-[10px] left-[4.17px] h-0 w-2.5 outline outline-[1.70px] outline-offset-[-0.85px] outline-gray-600" />
-              </div>
-              <div className="justify-start text-center font-['Inter'] text-sm leading-normal font-medium text-gray-800">
-                1
-              </div>
-              <div className="relative h-5 w-5 overflow-hidden">
-                <div className="absolute top-[5px] left-[10px] h-2.5 w-0 outline outline-[1.70px] outline-offset-[-0.85px] outline-gray-600" />
-                <div className="absolute top-[10px] left-[5px] h-0 w-2.5 outline outline-[1.70px] outline-offset-[-0.85px] outline-gray-600" />
-              </div>
+            <div className="absolute top-8 left-0 flex gap-2">
+              {product.sizes.map((size) => (
+                <button
+                  key={size}
+                  onClick={() => handleSizeSelect(size)}
+                  className={`inline-flex h-10 min-w-[2.5rem] items-center justify-center rounded px-2 outline-1 outline-offset-[-1px] ${
+                    selectedSize === size
+                      ? 'outline-gray-900'
+                      : 'outline-gray-200'
+                  }`}
+                >
+                  <span
+                    className={`text-xs font-medium capitalize ${
+                      selectedSize === size ? 'text-gray-900' : 'text-gray-600'
+                    }`}
+                  >
+                    {size}
+                  </span>
+                </button>
+              ))}
             </div>
-            <div className="absolute top-0 left-0 justify-start text-center font-['Inter'] text-xs leading-normal font-medium tracking-wide text-gray-600 uppercase">
-              Quantity
+          </div>
+
+          {/* Quantity */}
+          <div className="relative mt-6 h-20 w-full max-w-sm">
+            <div className="absolute top-0 left-0 text-xs font-medium tracking-wide text-gray-600 uppercase">
+              Quantity (max {product.availableQuantity})
+            </div>
+            <div className="absolute top-8 left-0 flex h-11 w-full max-w-xs items-center justify-between rounded px-4 outline-1 outline-gray-200">
+              <button
+                onClick={() => handleQuantityChange(-1)}
+                className="text-xl font-bold"
+                disabled={quantity <= 1}
+              >
+                -
+              </button>
+              <span className="text-sm font-medium">{quantity}</span>
+              <button
+                onClick={() => handleQuantityChange(1)}
+                className="text-xl font-bold"
+                disabled={quantity >= product.availableQuantity}
+              >
+                +
+              </button>
             </div>
           </div>
-          <Button variant={'default'}>ADD To Cart</Button>
-          <p>— Free shipping on orders $100+</p>
+
+          <Button
+            variant="default"
+            className="mt-6"
+            onClick={handleAddToCart}
+            disabled={!product.inStock || quantity < 1}
+          >
+            Add to Cart
+          </Button>
         </div>
       </div>
     </section>
@@ -139,3 +187,4 @@ const Product = () => {
 };
 
 export default Product;
+

@@ -24,18 +24,21 @@ import Settings from './pages/dashboard/Settings';
 import Reviews from './pages/dashboard/Reviews';
 import Customer from './pages/dashboard/Customer';
 import DashboardLayout from './layouts/DashboardLayout';
+import MainLayout from './layouts/MainLayout';
 
 function App() {
   return (
     <>
       <Routes>
         {/* Public routes */}
-        <Route index element={<Home />} />
-        <Route path="product-details" element={<ProductDetails />} />
-        <Route path="listing" element={<Listing />} />
-        <Route path="cart" element={<Cart />} />
-        <Route path="checkout" element={<Checkout />} />
-        <Route path="succesful-order" element={<SuccesfulORder />} />
+        <Route element={<MainLayout />}>
+          <Route index element={<Home />} />
+          <Route path="product-details/:id" element={<ProductDetails />} />
+          <Route path="listing" element={<Listing />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="checkout" element={<Checkout />} />
+          <Route path="succesful-order" element={<SuccesfulORder />} />
+        </Route>
 
         {/* Authentication routes */}
         <Route path="/auth" element={<AuthLayout />}>

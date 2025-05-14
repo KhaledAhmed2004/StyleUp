@@ -1,65 +1,35 @@
+import { useEffect, useState } from 'react';
 import { Input } from '@/components/ui/input';
 import {
   Table,
   TableBody,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
 import { Ellipsis, Search } from 'lucide-react';
-import img from '../../assets/blackTeshart.png';
 
-// sample order data
-const orders = [
-  {
-    id: 'ORD-001',
-    customerName: 'John Doe',
-    date: '2025-05-10',
-    total: 250.0,
-    status: 'Completed',
-    image: img,
-  },
-  {
-    id: 'ORD-002',
-    customerName: 'Jane Smith',
-    date: '2025-05-09',
-    total: 150.0,
-    status: 'Pending',
-    image: img,
-  },
-  {
-    id: 'ORD-003',
-    customerName: 'Michael Johnson',
-    date: '2025-05-08',
-    total: 350.0,
-    status: 'Cancelled',
-    image: img,
-  },
-  {
-    id: 'ORD-004',
-    customerName: 'Emily Brown',
-    date: '2025-05-07',
-    total: 450.0,
-    status: 'Completed',
-    image: img,
-  },
-  {
-    id: 'ORD-005',
-    customerName: 'Daniel Wilson',
-    date: '2025-05-06',
-    total: 550.0,
-    status: 'Pending',
-    image: img,
-  },
-];
+interface Order {
+  _id: string; // Changed to match the data structure
+  image: string;
+  customerName: string; // Changed from 'name' to 'customerName'
+  date: string;
+  totalPrice: number;
+  status: string;
+}
 
 const Order = () => {
-  // calculate total sales
-  const totalSales = orders
-    .reduce((sum, order) => sum + order.total, 0)
-    .toFixed(2);
+  const [orders, setOrders] = useState<Order[]>([]);
+
+  useEffect(() => {
+    fetch('/ordersData.json')
+      .then((res) => res.json())
+      .then((data: Order[]) => {
+        setOrders(data); // Populate the state with the fetched data
+      })
+      .catch((err) => console.error('Failed to load orders:', err));
+  }, []);
 
   return (
     <div className="rounded-[8px] border bg-white">
@@ -81,7 +51,7 @@ const Order = () => {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Customer</TableHead>
+            <TableHead>Order</TableHead>
             <TableHead>Date</TableHead>
             <TableHead className="text-right">Total</TableHead>
             <TableHead>Status</TableHead>
@@ -91,25 +61,27 @@ const Order = () => {
 
         <TableBody>
           {orders.map((order) => (
-            <TableRow key={order.id}>
+            <TableRow key={order._id}>
+              {' '}
+              {/* Use _id as the key */}
               <TableCell className="flex items-center gap-3 font-medium">
                 <div className="h-12 w-12 overflow-hidden rounded-lg bg-gray-200">
                   <img
                     src={order.image}
-                    alt="Customer"
+                    alt={order.customerName} // Updated to 'customerName'
                     className="h-full w-full object-cover"
                   />
                 </div>
-                {order.customerName}
+                {order.customerName} {/* Updated to 'customerName' */}
               </TableCell>
               <TableCell>{order.date}</TableCell>
               <TableCell className="text-right">
-                ${order.total.toFixed(2)}
+                ${order.totalPrice.toFixed(2)}
               </TableCell>
               <TableCell>
                 <span
                   className={`rounded-full px-2 py-1 text-xs font-semibold ${
-                    order.status === 'Completed'
+                    order.status === 'Delivered'
                       ? 'bg-green-100 text-green-700'
                       : order.status === 'Pending'
                         ? 'bg-yellow-100 text-yellow-700'
@@ -127,18 +99,6 @@ const Order = () => {
             </TableRow>
           ))}
         </TableBody>
-
-        <TableFooter>
-          <TableRow>
-            <TableCell colSpan={2} className="font-semibold">
-              Total Sales
-            </TableCell>
-            <TableCell className="text-right font-semibold">
-              ${totalSales}
-            </TableCell>
-            <TableCell colSpan={2} />
-          </TableRow>
-        </TableFooter>
       </Table>
     </div>
   );

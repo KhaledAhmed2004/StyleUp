@@ -1,4 +1,4 @@
-
+import { useEffect, useState } from 'react';
 import { Input } from '@/components/ui/input';
 import {
   Table,
@@ -9,48 +9,35 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Ellipsis, Search } from 'lucide-react';
-import img from '../../assets/blackTeshart.png';
 
-// sample customer data
-const customers = [
-  {
-    id: 'CUST-001',
-    name: 'John Doe',
-    email: 'john.doe@example.com',
-    shippingAddress: '123 Main St, New York, NY',
-    image: img,
-  },
-  {
-    id: 'CUST-002',
-    name: 'Jane Smith',
-    email: 'jane.smith@example.com',
-    shippingAddress: '456 Elm St, Los Angeles, CA',
-    image: img,
-  },
-  {
-    id: 'CUST-003',
-    name: 'Michael Johnson',
-    email: 'michael.johnson@example.com',
-    shippingAddress: '789 Oak St, Chicago, IL',
-    image: img,
-  },
-  {
-    id: 'CUST-004',
-    name: 'Emily Brown',
-    email: 'emily.brown@example.com',
-    shippingAddress: '101 Pine St, Houston, TX',
-    image: img,
-  },
-  {
-    id: 'CUST-005',
-    name: 'Daniel Wilson',
-    email: 'daniel.wilson@example.com',
-    shippingAddress: '202 Maple St, Miami, FL',
-    image: img,
-  },
-];
+// Define customer type
+interface Customer {
+  id: string;
+  name: string;
+  email: string;
+  shippingAddress: string;
+  image: string;
+}
 
-const Customer = () => {
+const Customers = () => {
+  const [customers, setCustomers] = useState<Customer[]>([]);
+
+  useEffect(() => {
+    fetch('/customersData.json') // ensure this file contains your customer array
+      .then((res) => res.json())
+      .then((data: any[]) => {
+        const mapped: Customer[] = data.map((cust) => ({
+          id: cust._id,
+          name: cust.name,
+          email: cust.email,
+          shippingAddress: cust.address,
+          image: cust.profileImg,
+        }));
+        setCustomers(mapped);
+      })
+      .catch((err) => console.error('Failed to load customers:', err));
+  }, []);
+
   return (
     <div className="rounded-[8px] border bg-white">
       {/* Header */}
@@ -59,10 +46,14 @@ const Customer = () => {
         <div className="flex items-center gap-4">
           <div className="relative">
             <Search
-              className="absolute top-1/2 left-3 -translate-y-1/2"
+              className="absolute top-1/2 left-3 -translate-y-1/2 text-gray-500"
               size={16}
             />
-            <Input type="text" placeholder="Search customers" className="pl-9" />
+            <Input
+              type="text"
+              placeholder="Search customers"
+              className="pl-9"
+            />
           </div>
         </div>
       </div>
@@ -85,7 +76,7 @@ const Customer = () => {
                 <div className="h-12 w-12 overflow-hidden rounded-lg bg-gray-200">
                   <img
                     src={customer.image}
-                    alt="Customer"
+                    alt={customer.name}
                     className="h-full w-full object-cover"
                   />
                 </div>
@@ -101,11 +92,9 @@ const Customer = () => {
             </TableRow>
           ))}
         </TableBody>
-
-        {/* No footer needed for customers */}
       </Table>
     </div>
   );
 };
 
-export default Customer;
+export default Customers;

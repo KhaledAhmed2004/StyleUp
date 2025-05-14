@@ -1,4 +1,3 @@
-
 const OrderSummarny = () => {
   return (
     <div className="relative h-96 w-80 overflow-hidden rounded outline outline-1 outline-offset-[-1px] outline-gray-200">

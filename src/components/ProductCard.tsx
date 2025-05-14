@@ -2,18 +2,22 @@ import { Badge } from '@/components/ui/badge';
 import { Link } from 'react-router';
 
 interface ProductCardProps {
+  to: string;
   imageSrc: string;
   title: string;
   price: number;
   inStock: boolean;
 }
 
-const ProductCard = ({ imageSrc, title, price, inStock }: ProductCardProps) => {
+const ProductCard = ({
+  to,
+  imageSrc,
+  title,
+  price,
+  inStock,
+}: ProductCardProps) => {
   return (
-    <Link
-      to={'/product-details'}
-      className="flex h-[434px] w-[264px] flex-col gap-4 px-2 py-6"
-    >
+    <Link to={to} className="flex h-[434px] w-[264px] flex-col gap-4 px-2 py-6">
       {/* Image wrapper */}
       <div className="flex h-[321px] w-full items-center justify-center overflow-hidden rounded-sm bg-neutral-white-w100">
         <img

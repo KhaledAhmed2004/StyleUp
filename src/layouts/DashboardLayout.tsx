@@ -48,11 +48,12 @@ export default function DashboardLayout() {
             <li key={name}>
               <NavLink
                 to={path}
+                end={path === '/dashboard'}
                 className={({ isActive }) =>
                   `flex items-center rounded p-2 transition-colors ${
                     isActive
-                      ? 'bg-gray-200 text-gray-900'
-                      : 'text-gray-800 hover:bg-gray-100 hover:font-semibold'
+                      ? 'bg-neutral-white-w100 text-gray-900'
+                      : 'text-gray-800 hover:bg-neutral-white-w100 hover:font-semibold'
                   }`
                 }
               >

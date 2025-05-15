@@ -187,4 +187,3 @@ const Product = ({ product, onAddToCart }: ProductProps) => {
 };
 
 export default Product;
-

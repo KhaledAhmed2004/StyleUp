@@ -5,7 +5,7 @@ import starImg from '../assets/Burst-pucker.svg';
 const Hero = () => {
   return (
     <section className="h-[440px] bg-neutral-white-w100">
-      <div className="mx-auto flex h-full max-w-7xl items-center justify-between">
+      <div className="mx-auto flex h-full max-w-7xl flex-col items-center justify-between md:flex-row">
         <div className="w-1/2">
           <div className="mb-[48px] space-y-[12px]">
             <h2 className="text-[32px] font-semibold">Fresh Arrivals Online</h2>

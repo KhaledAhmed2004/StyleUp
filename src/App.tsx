@@ -34,11 +34,11 @@ function App() {
         <Route element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="product-details/:id" element={<ProductDetails />} />
-          <Route path="listing" element={<Listing />} />
           <Route path="cart" element={<Cart />} />
           <Route path="checkout" element={<Checkout />} />
           <Route path="succesful-order" element={<SuccesfulORder />} />
         </Route>
+        <Route path="listing" element={<Listing />} />
 
         {/* Authentication routes */}
         <Route path="/auth" element={<AuthLayout />}>
